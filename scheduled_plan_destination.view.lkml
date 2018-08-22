@@ -12,5 +12,3 @@ view: scheduled_plan_destination {
   dimension: slug {}
   dimension: type {}
 }
-
-explore:scheduled_plan_destination  {}

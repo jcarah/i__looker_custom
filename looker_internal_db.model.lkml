@@ -4,6 +4,7 @@ connection: "looker_meta_db"
 include: "*.view"
 
 explore: failed_login_attempts{
+  hidden: yes
   from: login_attempt
 }
 
