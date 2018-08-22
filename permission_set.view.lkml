@@ -23,6 +23,7 @@ view: permission_set {
 
   dimension: name {
     sql: ${TABLE}.NAME ;;
+    label: "Permission Set Name"
   }
 
   dimension: permissions {
@@ -38,6 +39,16 @@ view: permission_set {
     type: string
     sql: group_concat(${name}) ;;
   }
+
+  dimension: old_permission_set_name {
+    sql: ${TABLE}.NAME ;;
+    label: "Old Permission Set Name"
+  }
+  dimension: new_permission_set_name {
+    sql: ${TABLE}.NAME ;;
+    label: "New Permission Set Name"
+  }
+
 
   measure: count {
     type: count

@@ -71,12 +71,7 @@ view: history {
     style: interval
   }
 
-  dimension: is_user_dashboard {
-    type: yesno
-    sql: ${dashboard.id} ;;
-  }
-
-  dimension: source {
+  dimension: default_source {
     case: {
       when: {
         sql: ${TABLE}.source = 'api3' ;;
@@ -150,6 +145,11 @@ view: history {
   dimension: raw_source {
     sql: ${TABLE}.source ;;
     hidden: yes
+  }
+
+  dimension: source {
+    sql: case when ${default_source} = 'Other' then ${raw_source}
+      else ${default_source} end;;
   }
 
   dimension: node_id {
@@ -302,14 +302,6 @@ view: history {
     }
   }
 
-  dimension: real_dash_id {
-    view_label: "Dashboard"
-    label: "Id"
-    description: "Includes both user defined dashboards and LookML dashboards"
-    type: string
-    sql: COALESCE(${dashboard_id}, {% if _dialect._name == 'hypersql' %} CONVERT(${dashboard.id}, SQL_VARCHAR) {% else %} CAST(${dashboard.id} AS CHAR(256)) {% endif %})
-      ;;
-  }
 
   dimension: dashboard_run_session_id {
     alias: [dashboard_session]

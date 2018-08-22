@@ -21,6 +21,7 @@ view: group {
   dimension: name {
     type: string
     sql: ${TABLE}.NAME ;;
+    label: "Group Name"
   }
 
   measure: groups {

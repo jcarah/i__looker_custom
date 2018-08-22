@@ -27,6 +27,7 @@ view: role {
 
   dimension: name {
     sql: ${TABLE}.NAME ;;
+    label: "Role Name"
   }
 
   dimension: permissions {
@@ -49,6 +50,8 @@ view: role {
     type: count
     drill_fields: [detail*]
   }
+
+
 
   # ----- Sets of fields for drilling ------
   set: detail {

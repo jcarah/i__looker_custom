@@ -21,7 +21,7 @@ view: event_attribute {
     label: "{{ _view._name }}"
   }
 
-  # Scheduler Delivery only
+  # Scheduler Delivery only -- needs to be plain text for scheduling
   dimension: schedule_plan_history_link {
     sql: case when ${TABLE}.name = 'scheduled_plan_id'
           then concat('https://wework.looker.com/admin/scheduled_jobs?scheduled_plan_id=',${TABLE}.value)

@@ -84,10 +84,16 @@ view: user {
     sql: ${TABLE}.RELEASE_EMAIL_UPDATES ;;
   }
 
+  dimension: added_user_name {
+    sql: ${name} ;;
+    label: "Added User Name"
+  }
+
   measure: count {
     type: count
 #     drill_fields: [detail*]
   }
+
 
 #   measure: roles {
 #     type: string

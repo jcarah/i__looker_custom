@@ -28,6 +28,15 @@ view: model_set {
     sql: ${TABLE}.UNLIMITED ;;
   }
 
+  dimension: old_model_set_name {
+    sql: ${TABLE}.NAME ;;
+    label: "Old Model Set Name"
+  }
+  dimension: new_model_set_name {
+    sql: ${TABLE}.NAME ;;
+    label: "New Model Set Name"
+  }
+
   measure: count {
     type: count
     drill_fields: [id, name, role.count]
