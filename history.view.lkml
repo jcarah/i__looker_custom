@@ -9,6 +9,11 @@ view: history {
       url: "/admin/queries/{{value}}"
     }
   }
+  dimension: link {
+    # Plain text version of link so it can be referenced in an export
+    sql: ${history.id} ;;
+    html: https://wework.looker.com/admin/queries/{{value}} ;;
+  }
 
   #  - dimension: runtime
   #    label: Runtime in Seconds

@@ -13,10 +13,21 @@ view: event_attribute {
 
   dimension: name {
     sql: ${TABLE}.NAME ;;
+
   }
 
   dimension: value {
     sql: ${TABLE}.VALUE ;;
+    label: "{{ _view._name }}"
+  }
+
+  # Scheduler Delivery only
+  dimension: schedule_plan_history_link {
+    sql: case when ${TABLE}.name = 'scheduled_plan_id'
+          then concat('https://wework.looker.com/admin/scheduled_jobs?scheduled_plan_id=',${TABLE}.value)
+         else null
+         end;;
+    html: {{value}} ;;
   }
 
   measure: count {
