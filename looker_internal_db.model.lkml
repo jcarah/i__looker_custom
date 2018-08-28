@@ -25,7 +25,7 @@ explore: export_queries_events {
   join: export_format {
     from: event_attribute
     sql_on: ${export_queries_events.id} = ${export_format.event_id} ;;
-    sql_where:${export_queries_events.name} = 'export_query' AND ${export_format.name} = 'export_format'  ;;
+    sql_where:${export_format.name} = 'export_format'  ;;
     fields: [export_format.value]
     view_label: "Export Queries Event Attributes"
     relationship: one_to_many
@@ -34,7 +34,7 @@ explore: export_queries_events {
     from: event_attribute
     sql_on: ${export_queries_events.id} = ${query_params.event_id} ;;
     relationship: one_to_many
-    sql_where:${export_queries_events.name} = 'export_query' AND ${query_params.name} = 'query_params'  ;;
+    sql_where: ${query_params.name} = 'query_params'  ;;
     fields: [query_params.value]
     view_label: "Export Queries Event Attributes"
   }
@@ -42,7 +42,7 @@ explore: export_queries_events {
     from: event_attribute
     sql_on: ${export_queries_events.id} = ${source.event_id} ;;
     relationship: one_to_many
-    sql_where:${export_queries_events.name} = 'export_query' AND ${source.name} = 'source'  ;;
+    sql_where: ${source.name} = 'source'  ;;
     fields: [source.value]
     view_label: "Export Queries Event Attributes"
   }
@@ -50,7 +50,7 @@ explore: export_queries_events {
     from: event_attribute
     sql_on: ${export_queries_events.id} = ${history_id.event_id} ;;
     relationship: one_to_many
-    sql_where:${export_queries_events.name} = 'export_query' AND ${history_id.name} = 'history_id'  ;;
+    sql_where: ${history_id.name} = 'history_id'  ;;
     fields: [history_id.value]
     view_label: "Export Queries Event Attributes"
   }
@@ -77,7 +77,7 @@ explore: scheduler_delivery_events  {
     from: event_attribute
     sql_on: ${scheduler_delivery_events.id} = ${scheduled_plan_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${scheduler_delivery_events.name} = 'scheduler_deliver'  AND ${scheduled_plan_id.name} = 'scheduled_plan_id';;
+    sql_where:  ${scheduled_plan_id.name} = 'scheduled_plan_id';;
     fields: ["scheduled_plan_id.value", "scheduled_plan_id.schedule_plan_history_link"]
     view_label: "Scheduler Delivery Event Attributes"
   }
@@ -91,7 +91,7 @@ explore: scheduler_delivery_events  {
     from: event_attribute
     sql_on: ${scheduler_delivery_events.id} = ${user_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${scheduler_delivery_events.name} = 'scheduler_deliver'  AND ${user_id.name} = 'user_id';;
+    sql_where: ${user_id.name} = 'user_id';;
     fields: ["user_id.value"]
     view_label: "Scheduler Delivery Event Attributes"
   }
@@ -105,7 +105,7 @@ explore: scheduler_delivery_events  {
     from: event_attribute
     sql_on: ${scheduler_delivery_events.id} = ${format.event_id} ;;
     relationship: one_to_many
-    sql_where: ${scheduler_delivery_events.name} = 'scheduler_deliver'  AND ${format.name} = 'format';;
+    sql_where: ${format.name} = 'format';;
     fields: ["format.value"]
     view_label: "Scheduler Delivery Event Attributes"
   }
@@ -113,7 +113,7 @@ explore: scheduler_delivery_events  {
     from: event_attribute
     sql_on: ${scheduler_delivery_events.id} = ${destination_types.event_id} ;;
     relationship: one_to_many
-    sql_where: ${scheduler_delivery_events.name} = 'scheduler_deliver'  AND ${destination_types.name} = 'destination_types';;
+    sql_where:  ${destination_types.name} = 'destination_types';;
     fields: ["destination_types.value"]
     view_label: "Scheduler Delivery Event Attributes"
   }
@@ -121,7 +121,7 @@ explore: scheduler_delivery_events  {
     from: event_attribute
     sql_on: ${scheduler_delivery_events.id} = ${status.event_id} ;;
     relationship: one_to_many
-    sql_where: ${scheduler_delivery_events.name} = 'scheduler_deliver'  AND ${status.name} = 'status';;
+    sql_where:  ${status.name} = 'status';;
     fields: ["status.value"]
     view_label: "Scheduler Delivery Event Attributes"
   }
@@ -136,7 +136,7 @@ explore: update_role_user_events {
     from: event_attribute
     sql_on: ${update_role_user_events.id} = ${update_role_user_old_user_ids.event_id} ;;
     relationship: one_to_many
-    sql_where:${update_role_user_events.name} = 'update_role_users' AND ${update_role_user_old_user_ids.name} = 'old_user_ids' ;;
+    sql_where:${update_role_user_old_user_ids.name} = 'old_user_ids' ;;
     fields: [update_role_user_old_user_ids.value]
     view_label: "Update Role Users Event Attributes"
   }
@@ -150,7 +150,7 @@ explore: update_role_user_events {
     from: event_attribute
     sql_on: ${update_role_user_events.id} = ${update_role_role_id.event_id} ;;
     relationship: one_to_many
-    sql_where:${update_role_user_events.name} = 'update_role_users' AND ${update_role_role_id.name} = 'role_id' ;;
+    sql_where: ${update_role_role_id.name} = 'role_id' ;;
     fields: [update_role_role_id.value]
     view_label: "Update Role Users Event Attributes"
   }
@@ -165,7 +165,7 @@ explore: update_role_user_events {
     from: event_attribute
     sql_on: ${update_role_user_events.id} = ${update_role_user_new_user_ids.event_id} ;;
     relationship: one_to_many
-    sql_where:${update_role_user_events.name} = 'update_role_users' AND ${update_role_user_new_user_ids.name} = 'new_user_ids' ;;
+    sql_where: ${update_role_user_new_user_ids.name} = 'new_user_ids' ;;
     fields: [update_role_user_new_user_ids.value]
     view_label: "Update Role Users Event Attributes"
   }
@@ -192,7 +192,7 @@ explore: update_permission_set_events {
     from: event_attribute
     sql_on: ${update_permission_set_events.id} = ${update_permission_set_permission_set_id.event_id} ;;
     relationship: one_to_many
-    sql_where:${update_permission_set_events.name} = 'update_permission_set' AND ${update_permission_set_permission_set_id.name} = 'permission_set_id' ;;
+    sql_where:${update_permission_set_permission_set_id.name} = 'permission_set_id' ;;
     fields: [update_permission_set_permission_set_id.value]
     view_label: "Update Permission Set Event Attributes"
   }
@@ -212,7 +212,7 @@ explore: update_permission_set_events {
     from: event_attribute
     sql_on: ${update_permission_set_events.id} = ${update_permission_set_old_permissions.event_id} ;;
     relationship: one_to_many
-    sql_where:${update_permission_set_events.name} = 'update_permission_set' AND ${update_permission_set_old_permissions.name} = 'old_permissions' ;;
+    sql_where: ${update_permission_set_old_permissions.name} = 'old_permissions' ;;
     fields: [update_permission_set_old_permissions.value]
     view_label: "Update Permission Set Event Attributes"
   }
@@ -220,7 +220,7 @@ explore: update_permission_set_events {
     from: event_attribute
     sql_on: ${update_permission_set_events.id} = ${update_permission_set_new_permissions.event_id} ;;
     relationship: one_to_many
-    sql_where:${update_permission_set_events.name} = 'update_permission_set' AND ${update_permission_set_new_permissions.name} = 'new_permissions' ;;
+    sql_where: ${update_permission_set_new_permissions.name} = 'new_permissions' ;;
     fields: [update_permission_set_new_permissions.value]
     view_label: "Update Permission Set Event Attributes"
   }
@@ -242,7 +242,7 @@ explore: update_role_events  {
     from: event_attribute
     sql_on: ${update_role_events.id} = ${role_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${update_role_events.name} = 'update_role'  AND ${role_id.name} = 'role_id';;
+    sql_where: ${role_id.name} = 'role_id';;
     fields: ["role_id.value"]
     view_label: "Update Role Event Attributes"
   }
@@ -256,7 +256,7 @@ explore: update_role_events  {
     from: event_attribute
     sql_on: ${update_role_events.id} = ${old_model_set_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${update_role_events.name} = 'update_role'  AND ${old_model_set_id.name} = 'old_model_set_id';;
+    sql_where: ${old_model_set_id.name} = 'old_model_set_id';;
     fields: ["old_model_set_id.value"]
     view_label: "Update Role Event Attributes"
   }
@@ -264,7 +264,7 @@ explore: update_role_events  {
     from: event_attribute
     sql_on: ${update_role_events.id} = ${new_model_set_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${update_role_events.name} = 'update_role'  AND ${new_model_set_id.name} = 'new_model_set_id';;
+    sql_where: ${new_model_set_id.name} = 'new_model_set_id';;
     fields: ["new_model_set_id.value"]
     view_label: "Update Role Event Attributes"
   }
@@ -287,7 +287,7 @@ explore: update_role_events  {
     from: event_attribute
     sql_on: ${update_role_events.id} = ${new_permission_set_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${update_role_events.name} = 'update_role'  AND ${new_permission_set_id.name} = 'new_permission_set_id';;
+    sql_where: ${new_permission_set_id.name} = 'new_permission_set_id';;
     fields: ["new_permission_set_id.value"]
     view_label: "Update Role Event Attributes"
   }
@@ -302,7 +302,7 @@ explore: update_role_events  {
     from: event_attribute
     sql_on: ${update_role_events.id} = ${old_permission_set_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${update_role_events.name} = 'update_role'  AND ${old_permission_set_id.name} = 'old_permission_set_id';;
+    sql_where: ${old_permission_set_id.name} = 'old_permission_set_id';;
     fields: ["old_permission_set_id.value"]
     view_label: "Update Role Event Attributes"
   }
@@ -331,7 +331,7 @@ explore: add_group_user_events{
     from: event_attribute
     sql_on: ${add_group_user_events.id} = ${group_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${add_group_user_events.name} = 'add_group_user' AND ${group_id.name} = 'group_id' ;;
+    sql_where:  ${group_id.name} = 'group_id' ;;
     fields: ["group_id.value"]
     view_label: "Add Group User Event Attributes"
   }
@@ -345,7 +345,7 @@ explore: add_group_user_events{
     from: event_attribute
     sql_on: ${add_group_user_events.id} = ${added_user_id.event_id} ;;
     relationship: one_to_many
-    sql_where: ${add_group_user_events.name} = 'add_group_user' AND ${added_user_id.name} = 'user_id' ;;
+    sql_where: ${added_user_id.name} = 'user_id' ;;
     fields: ["added_user_id.value"]
     view_label: "Add Group User Event Attributes"
   }
