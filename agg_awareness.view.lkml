@@ -1,3 +1,4 @@
+explore: agg_awareness {}
 view: agg_awareness {
 
     derived_table: {
