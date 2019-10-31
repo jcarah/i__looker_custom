@@ -1,4 +1,5 @@
 connection: "looker_meta_db"
+aggregate_awareness:  yes
 
 # include all the views
 include: "*.view"
@@ -9,7 +10,7 @@ explore: failed_login_attempts{
 }
 
 explore: history {
-  hidden: yes
+  hidden: no
   join: user {
     sql_on: ${history.user_id} = ${user.id} ;;
     relationship: many_to_one
@@ -356,5 +357,4 @@ explore: add_group_user_events{
     fields: ["added_user.added_user_name"]
     view_label: "Add Group User Event Attributes"
   }
-
 }
